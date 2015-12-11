@@ -25,6 +25,14 @@ public class CalculatorTest {
         Assert.assertFalse(battleResult.defenseWin);
     }
 
+    @Test
+    public void givenDefenderWithOneUnitAndAttackerWithOneUnit_defenderShouldWin() throws Exception {
+        Army attacker = new Army.Builder().withCarrier(1, 1L).build();
+        Army defender = new Army.Builder().withCarrier(1, 1L).build();
+        BattleResult battleResult = Calculator.calculate(new BattleSet(attacker, defender));
+        Assert.assertTrue(battleResult.defenseWin);
+    }
+
     private Army getEmptyArmy() {
         return new Army.Builder().build();
     }
